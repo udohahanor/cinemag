@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class Discover extends StatefulWidget {
+  const Discover({Key key}) : super(key: key);
+
   @override
   _DiscoverState createState() => _DiscoverState();
 }
@@ -16,15 +18,19 @@ class _DiscoverState extends State<Discover> {
   var configUrl =
       "https://api.themoviedb.org/3/configuration?api_key=3fca9e88734653353187d7adbdafc504";
 
+  // ignore: prefer_typing_uninitialized_variables
   var secureBaseUrl;
 
 //Image dimensions
   var posterSize = "w780";
 
+  // ignore: prefer_typing_uninitialized_variables
   var posterPath;
+  // ignore: prefer_typing_uninitialized_variables
   var rating;
 
 //Stores the concatenated paths of the Urls
+  // ignore: prefer_typing_uninitialized_variables
   var posterImage;
 
   Future getBaseurl() async {
@@ -32,7 +38,7 @@ class _DiscoverState extends State<Discover> {
     var baseData = json.decode(response.body);
 
     setState(() {
-      this.secureBaseUrl = baseData["images"]["secure_base_url"];
+      secureBaseUrl = baseData["images"]["secure_base_url"];
     });
   }
 
@@ -41,24 +47,24 @@ class _DiscoverState extends State<Discover> {
     var movieInfo = json.decode(response.body);
 
     setState(() {
-      this.posterPath = movieInfo["results"];
-      this.posterImage = secureBaseUrl + posterSize;
+      posterPath = movieInfo["results"];
+      posterImage = secureBaseUrl + posterSize;
     });
   }
 
   @override
   void initState() {
     super.initState();
-    this.getBaseurl();
-    this.getMovieData();
+    getBaseurl();
+    getMovieData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300.0,
       child: ListView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: posterPath == null ? 0 : posterPath.length,
         itemBuilder: (BuildContext context, int index) {
@@ -66,7 +72,7 @@ class _DiscoverState extends State<Discover> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.0),
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
@@ -85,15 +91,15 @@ class _DiscoverState extends State<Discover> {
                   ),
                 ),
               ),
-              SizedBox(height: 2.0),
+              const SizedBox(height: 2.0),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SizedBox(
                   width: 130.0,
                   height: 40.0,
                   child: Text(
                     posterPath[index]["title"].toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontFamily: 'BentonSans',
                       fontWeight: FontWeight.w600,
@@ -106,21 +112,21 @@ class _DiscoverState extends State<Discover> {
                   ),
                 ),
               ),
-              SizedBox(height: 2.0),
+              const SizedBox(height: 2.0),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Icon(
+                    const Icon(
                       Icons.star,
                       size: 20.0,
                       color: Colors.yellow,
                     ),
-                    SizedBox(width: 10.0),
+                    const SizedBox(width: 10.0),
                     Text(
                       posterPath[index]["vote_average"].toDouble().toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontFamily: 'BentonSans',
                         fontWeight: FontWeight.w600,

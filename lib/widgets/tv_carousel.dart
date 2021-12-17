@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_this
+
 import 'dart:async';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
@@ -6,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class TVCarousel extends StatefulWidget {
+  const TVCarousel({Key key}) : super(key: key);
+
   @override
   _TVCarouselState createState() => _TVCarouselState();
 }
@@ -16,15 +20,19 @@ class _TVCarouselState extends State<TVCarousel> {
   var configUrl =
       "https://api.themoviedb.org/3/configuration?api_key=3fca9e88734653353187d7adbdafc504";
 
+  // ignore: prefer_typing_uninitialized_variables
   var secureBaseUrl;
 
 //Image dimensions
   var posterSize = "w780";
 
+  // ignore: prefer_typing_uninitialized_variables
   var posterPath;
+  // ignore: prefer_typing_uninitialized_variables
   var rating;
 
 //Stores the concatenated paths of the Urls
+  // ignore: prefer_typing_uninitialized_variables
   var posterImage;
 
   Future getBaseurl() async {
@@ -55,10 +63,10 @@ class _TVCarouselState extends State<TVCarousel> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 300.0,
       child: ListView.builder(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: posterPath == null ? 0 : posterPath.length,
         itemBuilder: (BuildContext context, int index) {
@@ -66,7 +74,7 @@ class _TVCarouselState extends State<TVCarousel> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 5.0),
+                padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10.0),
@@ -85,15 +93,15 @@ class _TVCarouselState extends State<TVCarousel> {
                   ),
                 ),
               ),
-              SizedBox(height: 2.0),
+              const SizedBox(height: 2.0),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
-                child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: SizedBox(
                   width: 130.0,
                   height: 40.0,
                   child: Text(
                     posterPath[index]["name"].toString(),
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.white,
                       fontFamily: 'BentonSans',
                       fontWeight: FontWeight.w600,
@@ -106,21 +114,21 @@ class _TVCarouselState extends State<TVCarousel> {
                   ),
                 ),
               ),
-              SizedBox(height: 2.0),
+              const SizedBox(height: 2.0),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
-                    Icon(
+                    const Icon(
                       Icons.star,
                       size: 20.0,
                       color: Colors.yellow,
                     ),
-                    SizedBox(width: 10.0),
+                    const SizedBox(width: 10.0),
                     Text(
                       posterPath[index]["vote_average"].toDouble().toString(),
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.white,
                         fontFamily: 'BentonSans',
                         fontWeight: FontWeight.w600,

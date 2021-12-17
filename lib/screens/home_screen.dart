@@ -1,11 +1,13 @@
 import 'package:cinemag/widgets/nowplaying_carousel.dart';
 import 'package:cinemag/widgets/popular_carousel.dart';
+import 'package:cinemag/widgets/toprated_carousel.dart';
 import 'package:cinemag/widgets/tv_carousel.dart';
-import 'package:cinemag/widgets/upcoming_carousel.dart';
 import 'package:cinemag/widgets/upcoming_carouselSlider.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key key}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -16,14 +18,14 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Colors.blueGrey[900],
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 20.0),
         child: ListView(
-          physics: BouncingScrollPhysics(),
+          physics: const BouncingScrollPhysics(),
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
+                const Text(
                   'Discover',
                   style: TextStyle(
                     color: Colors.white,
@@ -40,13 +42,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
-            UpcomingCarouselSlider(),
-            SizedBox(height: 15.0),
+            const SizedBox(height: 10.0),
+            const UpcomingCarouselSlider(),
+            const SizedBox(height: 15.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
+                const Text(
                   'TV',
                   style: TextStyle(
                     color: Colors.white,
@@ -67,13 +69,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
-            TVCarousel(),
-            SizedBox(height: 15.0),
+            const SizedBox(height: 10.0),
+            const TVCarousel(),
+            const SizedBox(height: 15.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
+                const Text(
                   'Trending',
                   style: TextStyle(
                     color: Colors.white,
@@ -94,13 +96,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
-            Upcoming(),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 10.0),
+            const Upcoming(),
+            const SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
+                const Text(
                   'Popular',
                   style: TextStyle(
                     color: Colors.white,
@@ -121,13 +123,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
-            Discover(),
-            SizedBox(height: 20.0),
+            const SizedBox(height: 10.0),
+            const Discover(),
+            const SizedBox(height: 20.0),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
-                Text(
+                const Text(
                   'Must Watch',
                   style: TextStyle(
                     color: Colors.white,
@@ -148,8 +150,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ],
             ),
-            SizedBox(height: 10.0),
-            MovieCarousel(),
+            const SizedBox(height: 10.0),
+            const TopRated(),
+            const SizedBox(height: 20.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                const Text(
+                  'Top Rated',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontFamily: 'BentonSans',
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20.0,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+                Text(
+                  'See all',
+                  style: TextStyle(
+                    color: Colors.yellow[900],
+                    fontFamily: 'BentonSans',
+                    fontSize: 15.0,
+                    letterSpacing: 1.2,
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),

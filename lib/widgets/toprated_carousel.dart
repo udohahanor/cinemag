@@ -5,16 +5,16 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
-class Upcoming extends StatefulWidget {
-  const Upcoming({Key key}) : super(key: key);
+class TopRated extends StatefulWidget {
+  const TopRated({Key key}) : super(key: key);
 
   @override
-  _UpcomingState createState() => _UpcomingState();
+  _DiscoverState createState() => _DiscoverState();
 }
 
-class _UpcomingState extends State<Upcoming> {
+class _DiscoverState extends State<TopRated> {
   var apiUrl =
-      "https://api.themoviedb.org/3/movie/upcoming?api_key=3fca9e88734653353187d7adbdafc504&language=en-US&page=1";
+      "https://api.themoviedb.org/3/movie/top_rated?api_key=3fca9e88734653353187d7adbdafc504&language=en-US&page=1";
   var configUrl =
       "https://api.themoviedb.org/3/configuration?api_key=3fca9e88734653353187d7adbdafc504";
 

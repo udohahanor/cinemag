@@ -152,31 +152,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 10.0),
             const TopRated(),
-            const SizedBox(height: 20.0),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                const Text(
-                  'Top Rated',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontFamily: 'BentonSans',
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20.0,
-                    letterSpacing: 1.2,
-                  ),
-                ),
-                Text(
-                  'See all',
-                  style: TextStyle(
-                    color: Colors.yellow[900],
-                    fontFamily: 'BentonSans',
-                    fontSize: 15.0,
-                    letterSpacing: 1.2,
-                  ),
-                ),
-              ],
-            ),
           ],
         ),
       ),

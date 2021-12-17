@@ -62,7 +62,7 @@ class _UpcomingCarouselSliderState extends State<UpcomingCarouselSlider> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 170.0,
+      height: 300.0,
       child: CarouselSlider.builder(
         options: CarouselOptions(
           initialPage: 0,
@@ -91,7 +91,7 @@ class _UpcomingCarouselSliderState extends State<UpcomingCarouselSlider> {
                   imageUrl: backdropImage.toString() +
                       backdropPath[index]["backdrop_path"].toString(),
                   width: MediaQuery.of(context).size.width,
-                  height: 100.0,
+                  height: 150.0,
                   fit: BoxFit.cover,
                 ),
               ),

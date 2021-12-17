@@ -7,6 +7,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class UpcomingCarouselSlider extends StatefulWidget {
+  const UpcomingCarouselSlider({Key key}) : super(key: key);
+
   @override
   _UpcomingCarouselSliderState createState() => _UpcomingCarouselSliderState();
 }
@@ -17,14 +19,17 @@ class _UpcomingCarouselSliderState extends State<UpcomingCarouselSlider> {
   var configUrl =
       "https://api.themoviedb.org/3/configuration?api_key=3fca9e88734653353187d7adbdafc504";
 
+  // ignore: prefer_typing_uninitialized_variables
   var secureBaseUrl;
 
 //Image dimensions
   var backdropSize = "w1280";
 
+  // ignore: prefer_typing_uninitialized_variables
   var backdropPath;
 
 //Stores the concatenated paths of the Urls
+  // ignore: prefer_typing_uninitialized_variables
   var backdropImage;
 
   Future getBaseurl() async {
@@ -32,7 +37,7 @@ class _UpcomingCarouselSliderState extends State<UpcomingCarouselSlider> {
     var baseData = json.decode(response.body);
 
     setState(() {
-      this.secureBaseUrl = baseData["images"]["secure_base_url"].toString();
+      secureBaseUrl = baseData["images"]["secure_base_url"].toString();
     });
   }
 
@@ -41,28 +46,29 @@ class _UpcomingCarouselSliderState extends State<UpcomingCarouselSlider> {
     var movieInfo = json.decode(response.body);
 
     setState(() {
-      this.backdropPath = movieInfo["results"];
-      this.backdropImage = secureBaseUrl + backdropSize;
+      backdropPath = movieInfo["results"];
+      backdropImage = secureBaseUrl + backdropSize;
     });
   }
 
   @override
   void initState() {
     super.initState();
+    // ignore: unnecessary_this
     this.getBaseurl();
-    this.getMovieData();
+    getMovieData();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 170.0,
+    return SizedBox(
+      height: 300.0,
       child: CarouselSlider.builder(
         options: CarouselOptions(
           initialPage: 0,
           autoPlay: true,
           reverse: false,
-          autoPlayInterval: Duration(seconds: 5),
+          autoPlayInterval: const Duration(seconds: 5),
           enlargeCenterPage: true,
           scrollDirection: Axis.horizontal,
           enableInfiniteScroll: true,
@@ -71,7 +77,7 @@ class _UpcomingCarouselSliderState extends State<UpcomingCarouselSlider> {
         itemCount: backdropPath == null ? 0 : backdropPath.length,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
-            padding: EdgeInsets.symmetric(horizontal: 3.0),
+            padding: const EdgeInsets.symmetric(horizontal: 3.0),
             child: Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20.0),
@@ -85,7 +91,7 @@ class _UpcomingCarouselSliderState extends State<UpcomingCarouselSlider> {
                   imageUrl: backdropImage.toString() +
                       backdropPath[index]["backdrop_path"].toString(),
                   width: MediaQuery.of(context).size.width,
-                  height: 100.0,
+                  height: 150.0,
                   fit: BoxFit.cover,
                 ),
               ),

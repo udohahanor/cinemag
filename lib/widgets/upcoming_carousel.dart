@@ -2,29 +2,24 @@ import 'package:cinemag/database/carousel_list.dart';
 import 'package:flutter/material.dart';
 
 class MovieCarousel extends StatefulWidget {
+  const MovieCarousel({Key key}) : super(key: key);
+
   @override
   _MovieCarouselState createState() => _MovieCarouselState();
 }
 
 class _MovieCarouselState extends State<MovieCarousel> {
-  PageController _pageController;
   int initialPage = 1;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController();
-
-    @override
-    void dispose() {
-      super.dispose();
-    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(2.0),
+      padding: const EdgeInsets.all(2.0),
       child: AspectRatio(
         aspectRatio: 1.7,
         child: PageView.builder(
